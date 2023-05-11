@@ -1,0 +1,22 @@
+C:\>_ edit                  Erstellen einer Textdatei
+      dir                   Directory (Verzeichnis)
+      del [xxxx.xxx]        Löschen einer Datei.
+      mkdir [xxxx]          Ordner erstellen.
+      cd [Ordner X]         Ordner öffnen.
+      cd ..                 Eine Ebene zurück
+      rmdir [Ordner X]      Ordner löschen.
+      tree                  Ordner struktur anzeigen lassen.
+      fdisk                 HDD optionen.
+      format [x:]           Festplatte formatieren
+      [x]                   Festplatte wechseln.
+
+
+                    /       Win   [C:\Daten\Ordner\]
+      Pfadtrenner {
+                    \       Linux [ /home/ihruser/daten/]
+
+      Partition erstellen:  fdisk -> 5 -> auswahl der 
+                            Festplatte 1-x -> Esc -> 1 ->
+                            Erstellen der Partition 1-3 ->
+                            Esc -> format [x]: -> format [y]: ->
+                            format [z]:

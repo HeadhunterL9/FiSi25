@@ -1,0 +1,98 @@
+GUI = Graphical User Interface
+
+Regeln/Hinweise zu Linux
+- GROSS & klein schreibung wird unterschieden!
+  -> brief.txt != Brief.txt
+- Backslash \ ist slash /
+\ -> Pfadtrenner: C:\ 
+/ -> Stammverzeichnis & Pfadtrenner
+- root arbeitet nicht! ... (keine Textverarbeitung... Browser... etc...)
+    root administriert!
+- wenn es nicht geht: liegt es an den RECHTEN!
+root dir -> /->home->Peter->Ilse <- jeder user hat ein homedir ... nur in ihrem homedir dürfen sie ALLES.
+
+3. VirtualBox vorbereiten ("neue Maschine")
+    - neue Maschine: Linux (Debian) (Version: Debian 64B7)
+    - Speichergröße: (RAM) (Hauptspeicher) - ohne GUI
+                            Arbeitsspicher ca 1024 ... 2048MB
+                                          (je nach RAM im Laptop)
+    - Festplatte: (erzeugen) ... (.vdi) Größe ... [10...12...15GB]
+                      ...dynamisch: "wächst mit ... bis max - größe"
+                      ...fest: generiert sofort den gesamten HDD-Platz
+
+4. Installation: Starten...
+Installation... Sprachen... Land... DE... Rechnername...: DEBIAN... Domäne: nichts... root-PW (2x)... user auflegen... (2x PW)
+Festplatte partionieren: (geführt)... Festplatte(sda) löschen: "Alles auf eine Partition"... Partionierung beenden und Änderungen übernehmen
+JA... Basissystem wird installiert... weiteres Medium: nein ... Server: z.B. xy_Aachen... Proxy (nichts)...
+Standardsystem: Ohne GUI (...) <- mit LEERTASTE an/abwählen...     GRUB Bootloader: [sda] wählen...
+System ist installiert!
+
+5. ...eine Textdatei erstellen...
+          ...ändern...
+                ...löschen...
+eine Möglichkeit: touch datei.txt <- erstellt eine 0 Byte große Textdatei...(dort wo sie grade sind)
+                  rm datei.txt <- löscht diese Datei
+
+eine Datei editieren: (eine Möglichkeit)
+                  nano datei.txt  <- STRG + O oder STRG + S -> Speichern || STRG + X -> Ende
+Datei "schnell" ausgeben:
+    cat        datei.txt
+    less       datei.txt
+    move       datei.txt
+
+Dateibaum anlegen im homedir -> mkdir a -> cd a -> mk dir b c -> cd b -> mkdir d e -> cd .. -> cd c -> mkdir f g
+einen Befehl nachinstallieren: tree, su - <- (root werden) -> apt install tree -> exit, dann als user, cd -> tree a [im homedir eingeben]
+
+Befehle: 
+pwd                                       == print working directory <- gibt das aktuelle Directory aus... nach einloggen homedir
+cd ..                                     == change directory <- geht eine Verzeichnisstruktur nach oben
+cd                                        == schnell zurück ins homedir <- mit pwd testen
+STRG + L                                  == Bildschirm löschen
+ls                                        == list... "dir"... Inhalt aus Directory anzeigen
+ls -l                                     == gleich wie ls nur langes Format
+cp -r                                     == copy (-r <- incl. subdir) || cp -r [Quelle] [Ziel]
+mv                                        == move <- verschieben || mv [Quelle] [Ziel]
+rm                                        == remove <- löschen
+ln -s                                     == Symlink || ln (-s) [absoluter Pfad[datei1]] [absoluter Pfad[datei2]]
+ln                                        == Hardlink
+touch                                     == Textdatei erstellen
+nano                                      == datei bearbeiten (reinschreiben)
+su [username]                             == switch user 
+su -                                      == switch user root
+exit                                      == exit root oder user
+mkdir                                     == make directory
+adduser [username]                        == user anlegen <- nur als root (su -)
+useradd -m -s /bin/bash                   == user anlegen (alte möglichkeit) <- keine Meldung, dann okay
+passwd [username]                         == passwd erstellen <- ändert auch Passwörter für andere user
+for((i=1; i<6; ++)) do touch datei$i;done == mehrere dateien schnell erstellen
+groupadd [groupname]                      == erstellt eine gruppe
+chgrp [goupname] [directory]              == verknüpft gruppe mit verzeichnis bzw ordner  
+nano /etc/group                           == öffnet gruppendatei
+
+
+Fachbegriffe: 
+- GUI
+- Distribution
+- RAM
+- .vdi
+- root
+- Proxy
+- Festplattenpartition
+- Pfadtrenner
+- Stammverzeichnis
+- Wurzelverzeichnise
+
+Rechte: rw-(Besitzer)r--(Gruppe)r--(alle anderen)
+- == nichts
+r == read        :: lesen/'lesbar'
+w == write       :: schreiben/'schreibbar'
+x == executeable :: ausführen/'ausführbar'
+
+r(400)w(200)-(100)r(40)-(20)-(10)r(4)-(2)-(1)
+
+Befehl zum ändern von Rechten -> chmod [zahl die man kaufen muss siehe zeile 88 bzw hier drüber] dateiname
+Alternative: chmod u  +/- r       u == user
+                   g      w       g == group
+                   o      x       o == others
+                   a      s       a == any
+                          t
